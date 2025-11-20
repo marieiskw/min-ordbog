@@ -7,10 +7,22 @@ body {
   padding: 20px;
 }
 
+.newWord {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 250px;
+}
+
 .sort {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  height: 20px;
 }
 
 .cards {
@@ -24,7 +36,7 @@ body {
   background-color: #e56868;
   color: #fff;
   border-radius: 7px;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 3 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
