@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 
 const wordList = [
@@ -48,15 +48,34 @@ const wordList = [
 
 export default function App() {
   const [items, setItems] = useState(wordList);
+  const [keyword, setKeyword] = useState("");
+  const [sortBy, setSortBy] = useState("date");
+
+  let sortedItems;
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
   }
 
+  // Filter
+  const filteredItems = items.filter((item) =>
+    item.danish.toLowerCase().startsWith(keyword.toLowerCase())
+  );
+
+  if (sortBy === "date")
+    sortedItems = filteredItems
+      .slice()
+      .sort((a, b) => Number(a.id) - Number(b.id));
+  if (sortBy === "description")
+    sortedItems = filteredItems
+      .slice()
+      .sort((a, b) => a.danish.localeCompare(b.danish));
+
   return (
     <div>
       <NewWord onAddItems={handleAddItems} />
-      <Cards items={items} />
+      <Search keyword={keyword} setKeyword={setKeyword} />
+      <Cards items={sortedItems} sortBy={sortBy} setSortBy={setSortBy} />
     </div>
   );
 }
@@ -84,8 +103,10 @@ function NewWord({ onAddItems }) {
     setJapanese("");
   }
 
+  function handleSpecialChar() {}
+
   return (
-    <form>
+    <form className="form">
       <div className="newWord">
         <div>
           <span>🇩🇰 </span>
@@ -115,13 +136,27 @@ function NewWord({ onAddItems }) {
           ></input>
         </div>
       </div>
-      <div>
-        <button>æ</button>
-        <button>ø</button>
-        <button>å</button>
-      </div>
+      {/* <div>
+        <button value="æ">æ</button>
+        <button value="ø">ø</button>
+        <button value="å">å</button>
+      </div> */}
       <button onClick={addNewWord}>Add</button>
     </form>
+  );
+}
+
+function Search({ keyword, setKeyword }) {
+  return (
+    <>
+      <input
+        className="searchInput"
+        type="text"
+        placeholder=" 🔍 Search"
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
+      />
+    </>
   );
 }
 
@@ -147,34 +182,34 @@ function Card({ item, selectId, handleClick }) {
   );
 }
 
-function Cards({ items }) {
+function Cards({ items, sortBy, setSortBy }) {
   const [selectId, setSelectedId] = useState(null);
-  const [sortBy, setSortBy] = useState("date");
-  let sortedItems;
 
   function handleClick(id) {
     setSelectedId(id !== selectId ? id : null);
   }
 
-  if (sortBy === "date")
-    sortedItems = items.slice().sort((a, b) => Number(a.id) - Number(b.id));
-  if (sortBy === "description")
-    sortedItems = items
-      .slice()
-      .sort((a, b) => a.danish.localeCompare(b.danish));
-
   return (
     <div>
       <div className="sort">
         <p>Sort by: </p>
-        <select className="select" onChange={(e) => setSortBy(e.target.value)}>
+        <select
+          className="select"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
           <option value="date">date</option>
           <option value="description">A-Z</option>
         </select>
       </div>
       <div className="cards">
-        {sortedItems.map((item) => (
-          <Card item={item} selectId={selectId} handleClick={handleClick} />
+        {items.map((item) => (
+          <Card
+            key={item.id}
+            item={item}
+            selectId={selectId}
+            handleClick={handleClick}
+          />
         ))}
       </div>
     </div>

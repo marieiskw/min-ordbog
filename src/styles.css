@@ -7,6 +7,10 @@ body {
   padding: 20px;
 }
 
+form {
+  width: 30vw;
+}
+
 .newWord {
   display: flex;
   flex-direction: column;
@@ -14,6 +18,16 @@ body {
 
 input {
   width: 250px;
+  height: 20px;
+}
+
+.searchInput {
+  position: relative;
+  align-items: end;
+  border-radius: 15px;
+  border: black 1px solid;
+  height: 30px;
+  padding: 10px;
 }
 
 .sort {
