@@ -47,6 +47,7 @@ const wordList = [
 ];
 
 export default function App() {
+  const [isOpenAdd, setIsOpenAdd] = useState(false);
   const [items, setItems] = useState(wordList);
   const [keyword, setKeyword] = useState("");
   const [sortBy, setSortBy] = useState("date");
@@ -69,18 +70,61 @@ export default function App() {
   if (sortBy === "description")
     sortedItems = filteredItems
       .slice()
-      .sort((a, b) => a.danish.localeCompare(b.danish));
+      .sort((a, b) => a.danish.localeCompare(b.danish, "da"));
 
   return (
-    <div>
-      <NewWord onAddItems={handleAddItems} />
-      <Search keyword={keyword} setKeyword={setKeyword} />
+    <div className="app">
+      <div className="header">
+        <Search keyword={keyword} setKeyword={setKeyword} />
+        <Add setIsOpenAdd={setIsOpenAdd} />
+      </div>
       <Cards items={sortedItems} sortBy={sortBy} setSortBy={setSortBy} />
+
+      {isOpenAdd && (
+        <div className="overlay">
+          <NewWordForm
+            onAddItems={handleAddItems}
+            setIsOpenAdd={setIsOpenAdd}
+          />
+        </div>
+      )}
     </div>
   );
 }
 
-function NewWord({ onAddItems }) {
+function Search({ keyword, setKeyword }) {
+  return (
+    <>
+      <input
+        className="searchInput"
+        type="text"
+        placeholder=" 🔍 Search"
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
+      />
+    </>
+  );
+}
+
+// function Control() {
+//   return (
+//     <div className="controlButtons">
+//       <Add />
+//       <Edit />
+//       <Delete />
+//     </div>
+//   );
+// }
+
+function Add({ setIsOpenAdd }) {
+  return (
+    <>
+      <button onClick={() => setIsOpenAdd(true)}>Add new word</button>
+    </>
+  );
+}
+
+function NewWordForm({ onAddItems, setIsOpenAdd }) {
   const [danish, setDanish] = useState("");
   const [japanese, setJapanese] = useState("");
   const [ddo, setDdo] = useState("");
@@ -101,64 +145,75 @@ function NewWord({ onAddItems }) {
     // Reset input box
     setDanish("");
     setJapanese("");
+
+    // Close modal
+    setIsOpenAdd(false);
   }
 
-  function handleSpecialChar() {}
+  function closeForm() {
+    setIsOpenAdd(false);
+  }
 
   return (
     <form className="form">
-      <div className="newWord">
-        <div>
-          <span>🇩🇰 </span>
-          <input
-            type="text"
-            placeholder="dk"
-            value={danish}
-            onChange={(e) => setDanish(e.target.value)}
-          ></input>
+      <h2>Add a new word</h2>
+      <div className="formContent">
+        <div className="newWord">
+          <div>
+            <span>🇩🇰 </span>
+            <input
+              type="text"
+              placeholder="dk"
+              value={danish}
+              onChange={(e) => setDanish(e.target.value)}
+            />
+          </div>
+          <div>
+            <span>🇯🇵 </span>
+            <input
+              type="text"
+              placeholder="jp"
+              value={japanese}
+              onChange={(e) => setJapanese(e.target.value)}
+            />
+          </div>
+          <div>
+            <span>📖 </span>
+            <input
+              type="url"
+              placeholder="link to DDO"
+              value={ddo}
+              onChange={(e) => setDdo(e.target.value)}
+            />
+          </div>
         </div>
-        <div>
-          <span>🇯🇵 </span>
-          <input
-            type="text"
-            placeholder="jp"
-            value={japanese}
-            onChange={(e) => setJapanese(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <span>📖 </span>
-          <input
-            type="url"
-            placeholder="link to DDO"
-            value={ddo}
-            onChange={(e) => setDdo(e.target.value)}
-          ></input>
+        <div className="buttons">
+          <div>
+            <button value="æ" className="specialCharButton">
+              æ
+            </button>
+            <button value="ø" className="specialCharButton">
+              ø
+            </button>
+            <button value="å" className="specialCharButton">
+              å
+            </button>
+          </div>
+          <button className="add" onClick={addNewWord}>
+            Add
+          </button>
+          <button className="cancel" onClick={closeForm}>
+            Cancel
+          </button>
         </div>
       </div>
-      {/* <div>
-        <button value="æ">æ</button>
-        <button value="ø">ø</button>
-        <button value="å">å</button>
-      </div> */}
-      <button onClick={addNewWord}>Add</button>
     </form>
   );
 }
 
-function Search({ keyword, setKeyword }) {
-  return (
-    <>
-      <input
-        className="searchInput"
-        type="text"
-        placeholder=" 🔍 Search"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-      />
-    </>
-  );
-}
+function Edit() {}
+
+function Delete() {}
 
 function Card({ item, selectId, handleClick }) {
   const isSelected = selectId === item.id;
