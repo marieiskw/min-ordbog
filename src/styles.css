@@ -1,4 +1,4 @@
-/* Main Color: #536a79 */
+/* Accent Color: #536a79 */
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,8 @@
 body {
   font-family: sans-serif;
   padding: 20px;
-  background-color: #f1eff0;
+  /* background-color: #f1eff0; */
+  background-color: #f7e7ce;
 }
 
 .app {
@@ -19,6 +20,34 @@ body {
   justify-content: space-between;
 }
 
+.searchIcon {
+  font-size: 18px;
+}
+
+.searchInput {
+  position: relative;
+  align-items: end;
+  border-radius: 15px;
+  border: #536a79 1.2px solid;
+  width: 30vw;
+  height: 30px;
+  padding: 0 15px;
+}
+
+.addButton {
+  border-radius: 15px;
+  width: 12vw;
+  height: 30px;
+  background-color: #536a79;
+  border: #536a79 1px solid;
+  color: #fff;
+  font-size: 16px;
+}
+
+.addButton:hover {
+  background-color: rgb(101, 128, 147);
+}
+
 form {
   width: 40vw;
   height: 30vw;
@@ -27,9 +56,18 @@ form {
   justify-content: center;
   align-items: center;
   background-color: #d0ac90;
+  /* background-color: #a7c2d7; */
+
   padding: 24px;
   border-radius: 8px;
   text-align: center;
+}
+
+.formTitle {
+  color: #536a79;
+  -webkit-text-stroke: 0.1px #fff;
+  font-size: 30px;
+  margin: 3px;
 }
 
 .formContent {
@@ -47,19 +85,30 @@ form {
   margin: 4px;
 }
 
-.addButton {
-  /* background-color: ; */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.charButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 70px;
 }
 
 .specialCharButton {
   background-color: #f1eff0;
-  border-color: #f1eff0;
+  border: #f1eff0;
   color: #536a79;
-  margin: 2px;
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
+  padding: 1px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
   font-weight: bold;
+  font-size: 20px;
+  -webkit-text-stroke: 0.1px #fff;
 }
 
 .specialCharButton:hover {
@@ -67,22 +116,35 @@ form {
   border-color: #f1eff0de;
 }
 
-input {
-  width: 70%;
-  height: 50px;
-  color: #536a79;
-  border: #536a79 1px solid;
-  font-size: 20px;
+.formControlButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.searchInput {
-  position: relative;
-  align-items: end;
+.formButton {
   border-radius: 15px;
-  border: black 1px solid;
-  width: 30vw;
+  width: 150px;
   height: 30px;
-  padding: 10px;
+  background-color: #536a79;
+  border: #536a79 1px solid;
+  color: #f1eff0de;
+  font-weight: bold;
+}
+
+.formButton:hover {
+  background-color: rgb(101, 128, 147);
+  border: rgb(101, 128, 147) 1px solid;
+}
+
+input {
+  width: 70%;
+  height: 40px;
+  color: #536a79;
+  border: #536a79 0.5px solid;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 0 15px;
 }
 
 .controlButtons {
@@ -102,6 +164,23 @@ a:hover {
   gap: 10px;
   margin: 10px;
   height: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #536a79;
+  -webkit-text-stroke: 0.2px #fff;
+}
+
+.select {
+  width: 6vw;
+  height: 25px;
+  font-size: 15px;
+  color: #536a79;
+  -webkit-text-stroke: 0.2px #fff;
+  background-color: #f7e7ce;
+  padding: 2px;
+  font-weight: bold;
+  border-radius: 7px;
+  border: #536a79 1.4px solid;
 }
 
 .cards {
@@ -114,6 +193,8 @@ a:hover {
   border: 1px solid #d65242;
   background-color: #d65242;
   color: #fff;
+  font-weight: bold;
+  font-size: 20px;
   border-radius: 7px;
   aspect-ratio: 3 / 1;
   display: flex;
@@ -124,11 +205,22 @@ a:hover {
   cursor: pointer;
 }
 
+.cards div:hover {
+  border: 1px solid #d65242;
+  background-color: #d65142e1;
+}
+
 div.selected {
   border: 1px solid #e7e7e7;
   background-color: #f7f7f7;
   color: #e03131;
   font-weight: bold;
+  font-size: 20px;
+}
+
+div.selected:hover {
+  border: 1px solid #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 .overlay {

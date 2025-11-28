@@ -94,15 +94,16 @@ export default function App() {
 
 function Search({ keyword, setKeyword }) {
   return (
-    <>
+    <div>
+      <span className="searchIcon">🔍 </span>
       <input
         className="searchInput"
         type="text"
-        placeholder=" 🔍 Search"
+        placeholder="Search"
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
       />
-    </>
+    </div>
   );
 }
 
@@ -119,7 +120,9 @@ function Search({ keyword, setKeyword }) {
 function Add({ setIsOpenAdd }) {
   return (
     <>
-      <button onClick={() => setIsOpenAdd(true)}>Add new word</button>
+      <button className="addButton" onClick={() => setIsOpenAdd(true)}>
+        Add new word
+      </button>
     </>
   );
 }
@@ -156,7 +159,7 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
 
   return (
     <form className="form">
-      <h2>Add a new word</h2>
+      <h2 className="formTitle">Add a new word</h2>
       <div className="formContent">
         <div className="newWord">
           <div>
@@ -188,7 +191,7 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
           </div>
         </div>
         <div className="buttons">
-          <div>
+          <div className="charButtons">
             <button value="æ" className="specialCharButton">
               æ
             </button>
@@ -199,12 +202,14 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
               å
             </button>
           </div>
-          <button className="add" onClick={addNewWord}>
-            Add
-          </button>
-          <button className="cancel" onClick={closeForm}>
-            Cancel
-          </button>
+          <div className="formControlButtons">
+            <button className="formButton" onClick={addNewWord}>
+              Add
+            </button>
+            <button className="formButton" onClick={closeForm}>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </form>
