@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles.css";
 
 const wordList = [
@@ -132,6 +132,11 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
   const [japanese, setJapanese] = useState("");
   const [ddo, setDdo] = useState("");
 
+  function addUniqueChar(e) {
+    const char = e.target.value;
+    setDanish((prev) => prev + char);
+  }
+
   function addNewWord(e) {
     e.preventDefault();
 
@@ -162,8 +167,8 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
       <h2 className="formTitle">Add a new word</h2>
       <div className="formContent">
         <div className="newWord">
-          <div>
-            <span>🇩🇰 </span>
+          <div className="content">
+            <span>🇩🇰</span>
             <input
               type="text"
               placeholder="dk"
@@ -171,8 +176,8 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
               onChange={(e) => setDanish(e.target.value)}
             />
           </div>
-          <div>
-            <span>🇯🇵 </span>
+          <div className="content">
+            <span>🇯🇵</span>
             <input
               type="text"
               placeholder="jp"
@@ -180,11 +185,13 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
               onChange={(e) => setJapanese(e.target.value)}
             />
           </div>
-          <div>
-            <span>📖 </span>
+          <div className="content">
+            <a href="https://ordnet.dk/ddo" target="_blank" className="ddoIcon">
+              📖
+            </a>
             <input
               type="url"
-              placeholder="link to DDO"
+              placeholder="Link to DDO"
               value={ddo}
               onChange={(e) => setDdo(e.target.value)}
             />
@@ -192,13 +199,28 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
         </div>
         <div className="buttons">
           <div className="charButtons">
-            <button value="æ" className="specialCharButton">
+            <button
+              type="button"
+              value="æ"
+              className="specialCharButton"
+              onClick={addUniqueChar}
+            >
               æ
             </button>
-            <button value="ø" className="specialCharButton">
+            <button
+              type="button"
+              value="ø"
+              className="specialCharButton"
+              onClick={addUniqueChar}
+            >
               ø
             </button>
-            <button value="å" className="specialCharButton">
+            <button
+              type="button"
+              value="å"
+              className="specialCharButton"
+              onClick={addUniqueChar}
+            >
               å
             </button>
           </div>

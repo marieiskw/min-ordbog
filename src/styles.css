@@ -65,7 +65,7 @@ form {
 
 .formTitle {
   color: #536a79;
-  -webkit-text-stroke: 0.1px #fff;
+  -webkit-text-stroke: 0.3px black;
   font-size: 30px;
   margin: 3px;
 }
@@ -74,15 +74,34 @@ form {
   /* background-color: #d65242; */
   width: 80%;
   height: 80%;
-  margin: 20px;
+  margin: 1px;
   font-size: 30px;
 }
 .newWord {
   height: 60%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 4px;
   margin: 4px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.ddoIcon {
+  text-decoration: none;
+}
+
+.ddoIcon:hover {
+  background-color: rgb(101, 128, 147);
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 .buttons {
@@ -109,6 +128,7 @@ form {
   font-weight: bold;
   font-size: 20px;
   -webkit-text-stroke: 0.1px #fff;
+  cursor: pointer;
 }
 
 .specialCharButton:hover {
@@ -130,6 +150,7 @@ form {
   border: #536a79 1px solid;
   color: #f1eff0de;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .formButton:hover {
