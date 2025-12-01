@@ -1,54 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import "./styles.css";
+import { useEffect, useState } from "react";
+import { supabase } from "./supabase";
 
-const wordList = [
-  {
-    id: 20251116160000,
-    danish: "jordbær",
-    japanese: "いちご",
-    ddo: "https://ordnet.dk/ddo/ordbog?query=jordb%C3%A6r",
-    image: "images/fruit_strawberry.png",
-  },
-  {
-    id: 20251116130000,
-    danish: "æble",
-    japanese: "りんご",
-    ddo: "https://ordnet.dk/ddo/ordbog?query=%C3%A6ble",
-    image: "images/fruit_apple.png",
-  },
-  {
-    id: 20251116140000,
-    danish: "å",
-    japanese: "みかん",
-    ddo: "https://ordnet.dk/ddo/ordbog?query=appelsin",
-    image: "images/fruit_orange.png",
-  },
-  {
-    id: 20251116110000,
-    danish: "ø",
-    japanese: "ぶどう",
-    ddo: "https://ordnet.dk/ddo/ordbog?query=vindrue",
-    image: "images/fruit_grape.png",
-  },
-  {
-    id: 20251116120000,
-    danish: "kirsebær",
-    japanese: "さくらんぼ",
-    ddo: "https://ordnet.dk/ddo/ordbog?query=kirseb%C3%A6r",
-    image: "images/fruit_cherry.png",
-  },
-  {
-    id: 20251116150000,
-    danish: "fersken",
-    japanese: "もも",
-    ddo: "https://ordnet.dk/ddo/ordbog?query=fersken",
-    image: "images/fruit_momo.png",
-  },
-];
+import "./styles.css";
 
 export default function App() {
   const [isOpenAdd, setIsOpenAdd] = useState(false);
-  const [items, setItems] = useState(wordList);
+  const [items, setItems] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [sortBy, setSortBy] = useState("date");
 
@@ -57,6 +14,21 @@ export default function App() {
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
   }
+
+  // Get data
+  useEffect(() => {
+    async function fetchWords() {
+      const { data, error } = await supabase
+        .from("wordList")
+        .select("id, danish, japanese, ddo")
+        .eq("archive_flg", "0");
+
+      if (error) console.error(error);
+      else setItems(data);
+    }
+
+    fetchWords();
+  }, []);
 
   // Filter
   const filteredItems = items.filter((item) =>
@@ -78,7 +50,11 @@ export default function App() {
         <Search keyword={keyword} setKeyword={setKeyword} />
         <Add setIsOpenAdd={setIsOpenAdd} />
       </div>
-      <Cards items={sortedItems} sortBy={sortBy} setSortBy={setSortBy} />
+      <Cards
+        items={sortedItems || items}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
 
       {isOpenAdd && (
         <div className="overlay">
@@ -137,28 +113,45 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
     setDanish((prev) => prev + char);
   }
 
-  function addNewWord(e) {
+  function generateTimestampId() {
+    const now = new Date();
+
+    const YYYY = now.getFullYear();
+    const MM = String(now.getMonth() + 1).padStart(2, "0");
+    const DD = String(now.getDate()).padStart(2, "0");
+    const HH = String(now.getHours()).padStart(2, "0");
+    const mm = String(now.getMinutes()).padStart(2, "0");
+    const ss = String(now.getSeconds()).padStart(2, "0");
+
+    return `${YYYY}${MM}${DD}${HH}${mm}${ss}`;
+  }
+
+  async function addNewWord(e) {
     e.preventDefault();
 
+    const newId = generateTimestampId();
+
     const newItem = {
-      id: Date.now(),
+      id: newId,
       danish,
       japanese,
       ddo,
-      image: "images/fruit_cherry.png",
+      archive_flg: 0,
     };
+
+    // Add to database
+    const { data, error } = await supabase.from("wordList").insert([newItem]);
 
     onAddItems(newItem);
 
+    closeForm();
+  }
+
+  function closeForm() {
     // Reset input box
     setDanish("");
     setJapanese("");
 
-    // Close modal
-    setIsOpenAdd(false);
-  }
-
-  function closeForm() {
     setIsOpenAdd(false);
   }
 
