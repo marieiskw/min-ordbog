@@ -52,6 +52,7 @@ export default function App() {
       </div>
       <Cards
         items={sortedItems || items}
+        setItems={setItems}
         sortBy={sortBy}
         setSortBy={setSortBy}
       />
@@ -82,16 +83,6 @@ function Search({ keyword, setKeyword }) {
     </div>
   );
 }
-
-// function Control() {
-//   return (
-//     <div className="controlButtons">
-//       <Add />
-//       <Edit />
-//       <Delete />
-//     </div>
-//   );
-// }
 
 function Add({ setIsOpenAdd }) {
   return (
@@ -231,33 +222,7 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
   );
 }
 
-function Edit() {}
-
-function Delete() {}
-
-function Card({ item, selectId, handleClick }) {
-  const isSelected = selectId === item.id;
-  return (
-    <div
-      key={item.id}
-      onClick={() => handleClick(item.id)}
-      className={isSelected ? "selected" : ""}
-    >
-      <p>{isSelected ? item.japanese : item.danish}</p>
-      <span>
-        {isSelected ? (
-          <a href={item.ddo} target="_blank">
-            📖
-          </a>
-        ) : (
-          ""
-        )}
-      </span>
-    </div>
-  );
-}
-
-function Cards({ items, sortBy, setSortBy }) {
+function Cards({ items, setItems, sortBy, setSortBy }) {
   const [selectId, setSelectedId] = useState(null);
 
   function handleClick(id) {
@@ -282,10 +247,62 @@ function Cards({ items, sortBy, setSortBy }) {
           <Card
             key={item.id}
             item={item}
+            setItems={setItems}
             selectId={selectId}
             handleClick={handleClick}
           />
         ))}
+      </div>
+    </div>
+  );
+}
+
+function Card({ item, setItems, selectId, handleClick }) {
+  const isSelected = selectId === item.id;
+
+  async function handleDeleteItem(item) {
+    const isOk = window.confirm(`Do you want to delete ${item.danish}?`);
+    if (!isOk) return;
+
+    // Delete from database
+    const { error } = await supabase
+      .from("wordList")
+      .delete()
+      .eq("id", item.id);
+
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    // Delete from items on screen
+    setItems((prev) => prev.filter((i) => i.id !== item.id));
+  }
+  return (
+    <div
+      key={item.id}
+      onClick={() => handleClick(item.id)}
+      className={isSelected ? "selected" : "card"}
+    >
+      <div className="controlButtons">
+        <img src="icons/edit.svg" alt="editIcon" />
+        <img
+          src="icons/archive.svg"
+          alt="archiveIcon"
+          onClick={() => handleDeleteItem(item)}
+        />
+      </div>
+      <div className="cardContent">
+        <p>{isSelected ? item.japanese : item.danish}</p>
+        <span>
+          {isSelected ? (
+            <a href={item.ddo} target="_blank">
+              📖
+            </a>
+          ) : (
+            ""
+          )}
+        </span>
       </div>
     </div>
   );
