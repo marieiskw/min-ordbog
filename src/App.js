@@ -5,15 +5,12 @@ import "./styles.css";
 
 export default function App() {
   const [isOpenAdd, setIsOpenAdd] = useState(false);
+  const [editItem, setEditItem] = useState(null);
   const [items, setItems] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [sortBy, setSortBy] = useState("date");
 
   let sortedItems;
-
-  function handleAddItems(item) {
-    setItems((items) => [...items, item]);
-  }
 
   // Get data
   useEffect(() => {
@@ -44,6 +41,41 @@ export default function App() {
       .slice()
       .sort((a, b) => a.danish.localeCompare(b.danish, "da"));
 
+  async function handleAddSubmit(item) {
+    const newId = generateTimestamp("id");
+    const now = generateTimestamp("stamp");
+
+    const newItem = {
+      id: newId,
+      ...item,
+      archive_flg: 0,
+      insert_date: now,
+      update_date: now,
+    };
+
+    // Add to database
+    await supabase.from("wordList").insert([newItem]);
+
+    // Add to screen items
+    setItems((items) => [...items, newItem]);
+  }
+
+  async function handleEditSubmit(updated) {
+    const now = generateTimestamp("stamp");
+
+    const updatedItem = {
+      ...updated,
+      update_date: now,
+    };
+    // Update database
+    await supabase.from("wordList").update(updatedItem).eq("id", editItem.id);
+
+    // Update screen item
+    setItems((items) =>
+      items.map((i) => (i.id === editItem.id ? { ...i, ...updatedItem } : i))
+    );
+  }
+
   return (
     <div className="app">
       <div className="header">
@@ -55,13 +87,26 @@ export default function App() {
         setItems={setItems}
         sortBy={sortBy}
         setSortBy={setSortBy}
+        setEditItem={setEditItem}
       />
 
       {isOpenAdd && (
         <div className="overlay">
-          <NewWordForm
-            onAddItems={handleAddItems}
-            setIsOpenAdd={setIsOpenAdd}
+          <WordForm
+            initialItem={null}
+            mode="add"
+            onSubmit={handleAddSubmit}
+            onClose={() => setIsOpenAdd(false)}
+          />
+        </div>
+      )}
+      {editItem && (
+        <div className="overlay">
+          <WordForm
+            initialItem={editItem}
+            mode="edit"
+            onSubmit={handleEditSubmit}
+            onClose={() => setEditItem(null)}
           />
         </div>
       )}
@@ -94,61 +139,44 @@ function Add({ setIsOpenAdd }) {
   );
 }
 
-function NewWordForm({ onAddItems, setIsOpenAdd }) {
-  const [danish, setDanish] = useState("");
-  const [japanese, setJapanese] = useState("");
-  const [ddo, setDdo] = useState("");
+function generateTimestamp(type) {
+  const now = new Date();
+
+  const YYYY = now.getFullYear();
+  const MM = String(now.getMonth() + 1).padStart(2, "0");
+  const DD = String(now.getDate()).padStart(2, "0");
+  const HH = String(now.getHours()).padStart(2, "0");
+  const mm = String(now.getMinutes()).padStart(2, "0");
+  const ss = String(now.getSeconds()).padStart(2, "0");
+
+  return type === "id"
+    ? `${YYYY}${MM}${DD}${HH}${mm}${ss}`
+    : `${YYYY}-${MM}-${DD} ${HH}:${mm}:${ss}`;
+}
+
+function WordForm({ initialItem, onSubmit, onClose, mode }) {
+  const [danish, setDanish] = useState(initialItem?.danish || "");
+  const [japanese, setJapanese] = useState(initialItem?.japanese || "");
+  const [ddo, setDdo] = useState(initialItem?.ddo || "");
 
   function addUniqueChar(e) {
     const char = e.target.value;
     setDanish((prev) => prev + char);
   }
 
-  function generateTimestampId() {
-    const now = new Date();
-
-    const YYYY = now.getFullYear();
-    const MM = String(now.getMonth() + 1).padStart(2, "0");
-    const DD = String(now.getDate()).padStart(2, "0");
-    const HH = String(now.getHours()).padStart(2, "0");
-    const mm = String(now.getMinutes()).padStart(2, "0");
-    const ss = String(now.getSeconds()).padStart(2, "0");
-
-    return `${YYYY}${MM}${DD}${HH}${mm}${ss}`;
-  }
-
-  async function addNewWord(e) {
+  function handleSubmit(e) {
     e.preventDefault();
+    onSubmit({ danish, japanese, ddo });
 
-    const newId = generateTimestampId();
-
-    const newItem = {
-      id: newId,
-      danish,
-      japanese,
-      ddo,
-      archive_flg: 0,
-    };
-
-    // Add to database
-    const { data, error } = await supabase.from("wordList").insert([newItem]);
-
-    onAddItems(newItem);
-
-    closeForm();
-  }
-
-  function closeForm() {
-    // Reset input box
-    setDanish("");
-    setJapanese("");
-
-    setIsOpenAdd(false);
+    // Close modal
+    onClose();
   }
 
   return (
     <form className="form">
-      <h2 className="formTitle">Add a new word</h2>
+      <h2 className="formTitle">
+        {mode === "add" ? "Add a new word" : "Edit word"}{" "}
+      </h2>
       <div className="formContent">
         <div className="newWord">
           <div className="content">
@@ -209,10 +237,10 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
             </button>
           </div>
           <div className="formControlButtons">
-            <button className="formButton" onClick={addNewWord}>
-              Add
+            <button className="formButton" onClick={handleSubmit}>
+              {mode === "add" ? "Add" : "Save"}
             </button>
-            <button className="formButton" onClick={closeForm}>
+            <button className="formButton" onClick={onClose}>
               Cancel
             </button>
           </div>
@@ -222,7 +250,7 @@ function NewWordForm({ onAddItems, setIsOpenAdd }) {
   );
 }
 
-function Cards({ items, setItems, sortBy, setSortBy }) {
+function Cards({ items, setItems, sortBy, setSortBy, setEditItem }) {
   const [selectId, setSelectedId] = useState(null);
 
   function handleClick(id) {
@@ -250,6 +278,7 @@ function Cards({ items, setItems, sortBy, setSortBy }) {
             setItems={setItems}
             selectId={selectId}
             handleClick={handleClick}
+            handleEditItem={setEditItem}
           />
         ))}
       </div>
@@ -257,7 +286,7 @@ function Cards({ items, setItems, sortBy, setSortBy }) {
   );
 }
 
-function Card({ item, setItems, selectId, handleClick }) {
+function Card({ item, setItems, selectId, handleClick, handleEditItem }) {
   const isSelected = selectId === item.id;
 
   async function handleDeleteItem(item) {
@@ -285,7 +314,11 @@ function Card({ item, setItems, selectId, handleClick }) {
       className={isSelected ? "selected" : "card"}
     >
       <div className="controlButtons">
-        <img src="icons/edit.svg" alt="editIcon" />
+        <img
+          src="icons/edit.svg"
+          alt="editIcon"
+          onClick={() => handleEditItem(item)}
+        />
         <img
           src="icons/archive.svg"
           alt="archiveIcon"
