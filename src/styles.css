@@ -253,6 +253,7 @@ div.selected {
   justify-content: center;
   align-items: center;
   position: relative;
+  aspect-ratio: 3 / 1;
 }
 
 div.selected:hover {
