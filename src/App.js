@@ -32,10 +32,14 @@ export default function App() {
     item.danish.toLowerCase().startsWith(keyword.toLowerCase())
   );
 
-  if (sortBy === "date")
+  if (sortBy === "oldest")
     sortedItems = filteredItems
       .slice()
       .sort((a, b) => Number(a.id) - Number(b.id));
+  if (sortBy === "latest")
+    sortedItems = filteredItems
+      .slice()
+      .sort((a, b) => Number(b.id) - Number(a.id));
   if (sortBy === "description")
     sortedItems = filteredItems
       .slice()
@@ -266,8 +270,9 @@ function Cards({ items, setItems, sortBy, setSortBy, setEditItem }) {
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
-          <option value="date">date</option>
-          <option value="description">A-Z</option>
+          <option value="oldest">oldest</option>
+          <option value="latest">latest</option>
+          <option value="description">A-Å</option>
         </select>
       </div>
       <div className="cards">
