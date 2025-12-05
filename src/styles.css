@@ -1,14 +1,72 @@
 /* Accent Color: #536a79 */
 
 * {
+  font-family: sans-serif;
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
-  padding: 20px;
+  padding: 0 20px;
   /* background-color: #f1eff0; */
   background-color: #f7e7ce;
+}
+
+.ribbon {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0 10px 0;
+}
+
+.logOutButton {
+  width: 7vw;
+  height: 30px;
+  background-color: #d0ac90;
+  border: #d0ac90 1px solid;
+  color: #fff;
+  font-size: 16px;
+}
+
+.loginForm {
+  background-color: #536a79;
+  width: 40vw;
+  height: 30vw;
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  display: flex;
+  gap: 40px;
+}
+
+.loginTitle {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.loginButton {
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: #d65242;
+  border: #d65242 1px solid;
+  color: #f1eff0de;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  border: 1px solid #d65242;
+  background-color: #d65142e1;
+}
+
+.loginControlLink {
+  color: #f1eff0de;
+  cursor: pointer;
+}
+
+.loginControlLink:hover {
+  text-decoration: underline;
 }
 
 .app {
@@ -77,6 +135,7 @@ form {
   margin: 1px;
   font-size: 30px;
 }
+
 .newWord {
   height: 60%;
   display: flex;
