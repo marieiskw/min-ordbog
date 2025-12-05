@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import { supabase } from "./supabase";
 
@@ -23,20 +22,55 @@ export default function App() {
     getSession();
   }, []);
 
+  async function handleLogin({ email, password }) {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+    setView("home");
+  }
+
+  async function handleSignup({ email, password }) {
+    const { error } = await supabase.auth.signup({ email, password });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("Completed!");
+    setView("login");
+  }
+
   function handleLogout() {
     setView("login");
     setUser(null);
   }
 
-  if (view === "login")
+  if (view === "login") {
     return (
-      <Login
-        onSignup={() => setView("signup")}
-        onLogin={() => setView("home")}
+      <Auth
+        mode={"login"}
+        onSubmit={handleLogin}
+        onChangeMode={() => setView("signup")}
       />
     );
+  }
 
-  if (view === "signup")
-    return <Signup onBackToLogin={() => setView("login")} />;
+  if (view === "signup") {
+    return (
+      <Auth
+        mode={"signup"}
+        onSubmit={handleSignup}
+        onChangeMode={() => setView("login")}
+      />
+    );
+  }
+
   return <Home onLogout={handleLogout} />;
 }

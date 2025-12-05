@@ -1,28 +1,19 @@
 import { useState } from "react";
-import { supabase } from "../supabase";
 
-export default function Login({ onLogin, onSignup }) {
+export default function Auth({ mode, onSubmit, onChangeMode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      alert(error.message);
-      return;
-    }
-
-    onLogin();
+    onSubmit({ email, password });
   }
 
   return (
-    <form onSubmit={handleLogin} className="loginForm">
-      <label className="loginTitle">Log in</label>
+    <form className="loginForm" onSubmit={handleSubmit}>
+      <label className="loginTitle">
+        {mode === "login" ? "Log in" : "Sign up"}
+      </label>
       <input
         type="email"
         value={email}
@@ -37,10 +28,10 @@ export default function Login({ onLogin, onSignup }) {
       />
       <div>
         <button type="submit" className="loginButton">
-          Log in
+          {mode === "login" ? "Log in" : "Sign up"}
         </button>
-        <p onClick={onSignup} className="loginControlLink">
-          Create an account
+        <p onClick={onChangeMode} className="loginControlLink">
+          {mode === "login" ? "Create an account" : "Back to Login"}
         </p>
       </div>
     </form>
