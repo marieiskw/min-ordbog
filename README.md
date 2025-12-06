@@ -1,4 +1,4 @@
-# My own danish-japanese wordbook
+# My own danish-japanese wordbook🇩🇰🇯🇵
 A simple Danish vocabulary learning app for japanese speaker.
 Users can sign up, log in, add words, edit them, delete them, and search.
 
