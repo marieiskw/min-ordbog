@@ -44,7 +44,12 @@ export default function WordForm({ initialItem, onSubmit, onClose, mode }) {
             />
           </div>
           <div className="content">
-            <a href="https://ordnet.dk/ddo" target="_blank" className="ddoIcon">
+            <a
+              href="https://ordnet.dk/ddo"
+              target="_blank"
+              className="ddoIcon"
+              rel="noreferrer"
+            >
               📖
             </a>
             <input

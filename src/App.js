@@ -8,12 +8,10 @@ import "./styles.css";
 
 export default function App() {
   const [view, setView] = useState("home");
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     async function getSession() {
       const { data } = await supabase.auth.getUser();
-      setUser(data.user);
 
       if (data.user) setView("home");
       else setView("login");
@@ -36,7 +34,7 @@ export default function App() {
   }
 
   async function handleSignup({ email, password }) {
-    const { error } = await supabase.auth.signup({ email, password });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     if (error) {
       alert(error.message);
@@ -47,11 +45,6 @@ export default function App() {
     setView("login");
   }
 
-  function handleLogout() {
-    setView("login");
-    setUser(null);
-  }
-
   if (view === "login") {
     return (
       <Auth
@@ -60,6 +53,11 @@ export default function App() {
         onChangeMode={() => setView("signup")}
       />
     );
+  }
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    setView("login");
   }
 
   if (view === "signup") {

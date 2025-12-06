@@ -111,6 +111,13 @@ body {
   background-color: rgb(101, 128, 147);
 }
 
+.noItems {
+  margin: 40px;
+  font-size: 20px;
+  color: #536a79;
+  font-weight: bold;
+}
+
 form {
   width: 40vw;
   height: 30vw;

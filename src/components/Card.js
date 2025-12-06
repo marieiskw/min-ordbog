@@ -1,5 +1,3 @@
-import { supabase } from "../supabase";
-
 export default function Card({
   item,
   selectId,
@@ -31,7 +29,7 @@ export default function Card({
         <p>{isSelected ? item.japanese : item.danish}</p>
         <span>
           {isSelected ? (
-            <a href={item.ddo} target="_blank">
+            <a href={item.ddo} target="_blank" rel="noreferrer">
               📖
             </a>
           ) : (

@@ -15,6 +15,9 @@ export default function Cards({
     setSelectedId(id !== selectId ? id : null);
   }
 
+  if (!items || items.length === 0) {
+    return <div className="noItems">No words registered</div>;
+  }
   return (
     <div>
       <div className="sort">
