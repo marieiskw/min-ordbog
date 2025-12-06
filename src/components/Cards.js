@@ -27,6 +27,7 @@ export default function Cards({
           <option value="oldest">oldest</option>
           <option value="latest">latest</option>
           <option value="description">A-Å</option>
+          <option value="random">random</option>
         </select>
       </div>
       <div className="cards">

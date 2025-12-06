@@ -34,6 +34,8 @@ export default function Home({ onLogout }) {
     sortedItems = filteredItems
       .slice()
       .sort((a, b) => a.danish.localeCompare(b.danish, "da"));
+  if (sortBy === "random")
+    sortedItems = filteredItems.slice().sort(() => Math.random() - 0.5);
 
   async function handleAddSubmit(item) {
     addWord(item);
