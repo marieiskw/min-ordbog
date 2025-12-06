@@ -1,8 +1,8 @@
-# My own danish-japanese wordbook🇩🇰🇯🇵
+# 📖 My own danish-japanese wordbook🇩🇰🇯🇵
 A simple Danish vocabulary learning app for japanese speaker.
 Users can sign up, log in, add words, edit them, delete them, and search.
 
-## Features
+## 📝 Features
 - User authentication with Supabase
 - Add / edit / delete words
 - Sort words (oldest / latest / alphabetical / random)
@@ -11,11 +11,28 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 - Quick access to DDO(Den Danske Ordbog)
 - On-screen special character input (å, æ, ø)
 
-## Tech Stack
+## 👀 Sneak peak
+
+- After login, you will have your own wordbook!
+
+![Home](images/home.png)
+
+- One-tap access to Japanese meanings
+- Open the DDO page with the book icon
+- Words can be easily edited or deleted as needed
+
+![Home2](images/home2.png)
+
+- Add/edit form with special character input (å, æ, ø)
+
+![Add-form](images/add-form.png)
+
+
+## 💻 Tech Stack
 - React
 - Supabase
 - Netlify
 
-## Deployment
+## 🔗 Deployment
 This app is deployed on Netlify:  
 https://min-ordbog.netlify.app/
