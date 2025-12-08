@@ -386,6 +386,9 @@ div.selected:hover {
   form {
     width: 90%;
   }
+  .controlButtons {
+    right: 20px;
+  }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -406,5 +409,8 @@ div.selected:hover {
   }
   form {
     width: 70%;
+  }
+  .controlButtons {
+    right: 20px;
   }
 }
