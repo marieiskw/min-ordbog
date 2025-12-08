@@ -387,7 +387,7 @@ div.selected:hover {
     width: 90%;
   }
   .controlButtons {
-    right: 20px;
+    right: 50px;
   }
 }
 
@@ -411,6 +411,6 @@ div.selected:hover {
     width: 70%;
   }
   .controlButtons {
-    right: 20px;
+    right: 50px;
   }
 }
