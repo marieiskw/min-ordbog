@@ -18,7 +18,7 @@ body {
 }
 
 .logOutButton {
-  width: 7vw;
+  width: 10%;
   height: 30px;
   background-color: #d0ac90;
   border: #d0ac90 1px solid;
@@ -31,13 +31,18 @@ body {
   border: #d0ac90d9 1px solid;
 }
 
+.loginFormWrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
 .loginForm {
   background-color: #536a79;
-  width: 40vw;
-  height: 30vw;
-  position: fixed;
-  top: 20%;
-  left: 30%;
+  width: 50%;
+  height: auto;
   display: flex;
   gap: 40px;
 }
@@ -76,6 +81,9 @@ body {
 
 .app {
   margin: 0 auto;
+  width: 100%;
+  max-width: 1600px;
+  padding: 16px;
 }
 
 .header {
@@ -99,7 +107,7 @@ body {
 
 .addButton {
   border-radius: 15px;
-  width: 12vw;
+  width: 15%;
   height: 30px;
   background-color: #536a79;
   border: #536a79 1px solid;
@@ -119,8 +127,8 @@ body {
 }
 
 form {
-  width: 40vw;
-  height: 30vw;
+  width: 50%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -248,7 +256,7 @@ a:hover {
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  margin: 10px;
+  margin: 10px 0;
   height: 20px;
   font-weight: bold;
   font-size: 16px;
@@ -257,7 +265,7 @@ a:hover {
 }
 
 .select {
-  width: 6vw;
+  width: 10%;
   height: 25px;
   font-size: 15px;
   color: #536a79;
@@ -343,4 +351,49 @@ div.selected:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+@media screen and (max-width: 768px) {
+  .loginForm {
+    width: 100%;
+  }
+  .logOutButton {
+    width: 20%;
+  }
+  input {
+    width: 85%;
+  }
+  .select {
+    width: 20%;
+  }
+  .addButton {
+    width: 30%;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  form {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .loginForm {
+    width: 80%;
+  }
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  input {
+    width: 80%;
+  }
+  .select {
+    width: 20%;
+  }
+  .addButton {
+    width: 20%;
+  }
+  form {
+    width: 70%;
+  }
 }
