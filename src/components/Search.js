@@ -1,6 +1,6 @@
 export default function Search({ keyword, setKeyword }) {
   return (
-    <div>
+    <div className="search">
       <span className="searchIcon">🔍 </span>
       <input
         className="searchInput"
