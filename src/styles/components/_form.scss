@@ -16,7 +16,7 @@ form {
   @media screen and (max-width: 768px) {
     width: 90%;
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
     width: 70%;
   }
 }
@@ -48,7 +48,7 @@ input {
     width: 85%;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
     width: 80%;
   }
 }
