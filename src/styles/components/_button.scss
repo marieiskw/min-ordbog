@@ -1,0 +1,99 @@
+@use "../variables";
+
+.ribbon {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0 10px 0;
+
+  .logOutButton {
+    width: 10%;
+    height: 30px;
+    background-color: variables.$second-color;
+    border: variables.$second-color 1px solid;
+    color: variables.$white-for-char;
+    font-size: 16px;
+
+    &:hover {
+      background-color: variables.$second-color-hover;
+      border: variables.$second-color-hover 1px solid;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 20%;
+    }
+  }
+}
+
+.loginButton {
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: variables.$main-color;
+  border: variables.$main-color 1px solid;
+  color: variables.$white-for-char;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid variables.$main-color-hover;
+    background-color: variables.$main-color-hover;
+  }
+}
+
+.addButton {
+  border-radius: 15px;
+  width: 15%;
+  height: 30px;
+  background-color: variables.$accent-color;
+  border: variables.$accent-color 1px solid;
+  color: variables.$white-for-char;
+  font-size: 16px;
+
+  &:hover {
+    background-color: variables.$accent-color-hover;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 10px;
+    width: 70%;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 20%;
+  }
+}
+
+.specialCharButton {
+  background-color: variables.$white;
+  border: variables.$white;
+  color: variables.$accent-color;
+  padding: 1px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  -webkit-text-stroke: 0.1px variables.$white-for-char;
+  cursor: pointer;
+
+  &:hover {
+    background-color: variables.$white-hover;
+    border-color: variables.$white-hover;
+  }
+}
+
+.formButton {
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: variables.$accent-color;
+  border: variables.$accent-color 1px solid;
+  color: variables.$white-for-char;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: variables.$accent-color-hover;
+    border: variables.$accent-color-hover 1px solid;
+  }
+}

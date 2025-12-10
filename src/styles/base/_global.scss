@@ -1,0 +1,22 @@
+@use "../variables";
+
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  background-color: variables.$bg-color;
+}
+
+.app {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1600px;
+  padding: 16px;
+}
+
+a:hover {
+  background-color: variables.$accent-color;
+}

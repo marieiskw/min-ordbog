@@ -1,0 +1,67 @@
+@use "../variables";
+
+.card {
+  border: 1px solid variables.$main-color;
+  background-color: variables.$main-color;
+  color: variables.$white;
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 7px;
+  aspect-ratio: 3 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    border: 1px solid variables.$main-color-hover;
+    background-color: variables.$main-color-hover;
+  }
+}
+
+.controlButtons {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  display: flex;
+  gap: 10px;
+  height: 17%;
+
+  @media screen and (max-width: 768px) {
+    right: 120px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    right: 50px;
+  }
+}
+
+.cardContent {
+  height: 60%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.selected {
+  border: 1px solid variables.$white;
+  background-color: variables.$white;
+  color: variables.$main-color;
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  aspect-ratio: 3 / 1;
+
+  &:hover {
+    border: 1px solid variables.$white-hover;
+    background-color: variables.$white-hover;
+  }
+}

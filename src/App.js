@@ -4,7 +4,7 @@ import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import { supabase } from "./supabase";
 
-import "./styles.css";
+import "./styles.scss";
 
 export default function App() {
   const [view, setView] = useState("home");

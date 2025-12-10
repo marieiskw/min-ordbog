@@ -1,0 +1,54 @@
+@use "../variables";
+
+form {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: variables.$second-color;
+
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 70%;
+  }
+}
+
+.formTitle {
+  color: variables.$accent-color;
+  -webkit-text-stroke: 0.3px black;
+  font-size: 30px;
+  margin: 3px;
+}
+
+.formContent {
+  width: 80%;
+  height: 80%;
+  margin: 1px;
+  font-size: 30px;
+}
+
+input {
+  width: 70%;
+  height: 40px;
+  color: variables.$accent-color;
+  border: variables.$accent-color 0.5px solid;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 0 15px;
+
+  @media screen and (max-width: 768px) {
+    width: 85%;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 80%;
+  }
+}

@@ -1,5 +1,3 @@
-/* Accent Color: #536a79 */
-
 * {
   font-family: sans-serif;
   box-sizing: border-box;
@@ -7,76 +5,7 @@
 
 body {
   padding: 0;
-  /* background-color: #f1eff0; */
   background-color: #f7e7ce;
-}
-
-.ribbon {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 0 10px 0;
-}
-
-.logOutButton {
-  width: 10%;
-  height: 30px;
-  background-color: #d0ac90;
-  border: #d0ac90 1px solid;
-  color: #fff;
-  font-size: 16px;
-}
-
-.logOutButton:hover {
-  background-color: #d0ac90d9;
-  border: #d0ac90d9 1px solid;
-}
-
-.loginFormWrapper {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.loginForm {
-  background-color: #536a79;
-  width: 50%;
-  height: auto;
-  display: flex;
-  gap: 40px;
-}
-
-.loginTitle {
-  color: #fff;
-  font-size: 30px;
-  font-weight: bold;
-  padding: 10px;
-}
-
-.loginButton {
-  border-radius: 15px;
-  width: 150px;
-  height: 30px;
-  background-color: #d65242;
-  border: #d65242 1px solid;
-  color: #f1eff0de;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.loginButton:hover {
-  border: 1px solid #d65242;
-  background-color: #d65142e1;
-}
-
-.loginControlLink {
-  color: #f1eff0de;
-  cursor: pointer;
-}
-
-.loginControlLink:hover {
-  text-decoration: underline;
 }
 
 .app {
@@ -86,9 +15,238 @@ body {
   padding: 16px;
 }
 
+a:hover {
+  background-color: #536a79;
+}
+
+.ribbon {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0 10px 0;
+}
+.ribbon .logOutButton {
+  width: 10%;
+  height: 30px;
+  background-color: #d0ac90;
+  border: #d0ac90 1px solid;
+  color: #fff;
+  font-size: 16px;
+}
+.ribbon .logOutButton:hover {
+  background-color: rgba(208, 172, 144, 0.8509803922);
+  border: rgba(208, 172, 144, 0.8509803922) 1px solid;
+}
+@media screen and (max-width: 768px) {
+  .ribbon .logOutButton {
+    width: 20%;
+  }
+}
+
+.loginButton {
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: #d65242;
+  border: #d65242 1px solid;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.loginButton:hover {
+  border: 1px solid rgba(214, 81, 66, 0.8823529412);
+  background-color: rgba(214, 81, 66, 0.8823529412);
+}
+
+.addButton {
+  border-radius: 15px;
+  width: 15%;
+  height: 30px;
+  background-color: #536a79;
+  border: #536a79 1px solid;
+  color: #fff;
+  font-size: 16px;
+}
+.addButton:hover {
+  background-color: #658093;
+}
+@media screen and (max-width: 768px) {
+  .addButton {
+    margin-top: 10px;
+    width: 70%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .addButton {
+    width: 20%;
+  }
+}
+
+.specialCharButton {
+  background-color: #f1eff0;
+  border: #f1eff0;
+  color: #536a79;
+  padding: 1px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  -webkit-text-stroke: 0.1px #fff;
+  cursor: pointer;
+}
+.specialCharButton:hover {
+  background-color: rgba(241, 239, 240, 0.8705882353);
+  border-color: rgba(241, 239, 240, 0.8705882353);
+}
+
+.formButton {
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: #536a79;
+  border: #536a79 1px solid;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.formButton:hover {
+  background-color: #658093;
+  border: #658093 1px solid;
+}
+
+.card {
+  border: 1px solid #d65242;
+  background-color: #d65242;
+  color: #f1eff0;
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 7px;
+  aspect-ratio: 3/1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  border: 1px solid rgba(214, 81, 66, 0.8823529412);
+  background-color: rgba(214, 81, 66, 0.8823529412);
+}
+
+.controlButtons {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  display: flex;
+  gap: 10px;
+  height: 17%;
+}
+@media screen and (max-width: 768px) {
+  .controlButtons {
+    right: 120px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .controlButtons {
+    right: 50px;
+  }
+}
+
+.cardContent {
+  height: 60%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.selected {
+  border: 1px solid #f1eff0;
+  background-color: #f1eff0;
+  color: #d65242;
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  aspect-ratio: 3/1;
+}
+div.selected:hover {
+  border: 1px solid rgba(241, 239, 240, 0.8705882353);
+  background-color: rgba(241, 239, 240, 0.8705882353);
+}
+
+form {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d0ac90;
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  form {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  form {
+    width: 70%;
+  }
+}
+
+.formTitle {
+  color: #536a79;
+  -webkit-text-stroke: 0.3px black;
+  font-size: 30px;
+  margin: 3px;
+}
+
+.formContent {
+  width: 80%;
+  height: 80%;
+  margin: 1px;
+  font-size: 30px;
+}
+
+input {
+  width: 70%;
+  height: 40px;
+  color: #536a79;
+  border: #536a79 0.5px solid;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 0 15px;
+}
+@media screen and (max-width: 768px) {
+  input {
+    width: 85%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  input {
+    width: 80%;
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .search {
@@ -107,57 +265,6 @@ body {
   width: 90%;
   height: 30px;
   padding: 0 15px;
-}
-
-.addButton {
-  border-radius: 15px;
-  width: 15%;
-  height: 30px;
-  background-color: #536a79;
-  border: #536a79 1px solid;
-  color: #fff;
-  font-size: 16px;
-}
-
-.addButton:hover {
-  background-color: rgb(101, 128, 147);
-}
-
-.noItems {
-  margin: 40px;
-  font-size: 20px;
-  color: #536a79;
-  font-weight: bold;
-}
-
-form {
-  width: 50%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #d0ac90;
-  /* background-color: #a7c2d7; */
-
-  padding: 24px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.formTitle {
-  color: #536a79;
-  -webkit-text-stroke: 0.3px black;
-  font-size: 30px;
-  margin: 3px;
-}
-
-.formContent {
-  /* background-color: #d65242; */
-  width: 80%;
-  height: 80%;
-  margin: 1px;
-  font-size: 30px;
 }
 
 .newWord {
@@ -180,9 +287,8 @@ form {
 .ddoIcon {
   text-decoration: none;
 }
-
 .ddoIcon:hover {
-  background-color: rgb(101, 128, 147);
+  background-color: #658093;
   cursor: pointer;
   border-radius: 20px;
 }
@@ -200,59 +306,30 @@ form {
   height: 70px;
 }
 
-.specialCharButton {
-  background-color: #f1eff0;
-  border: #f1eff0;
-  color: #536a79;
-  padding: 1px;
-  width: 60px;
-  height: 60px;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 20px;
-  -webkit-text-stroke: 0.1px #fff;
-  cursor: pointer;
-}
-
-.specialCharButton:hover {
-  background-color: #f1eff0de;
-  border-color: #f1eff0de;
-}
-
 .formControlButtons {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
-.formButton {
-  border-radius: 15px;
-  width: 150px;
-  height: 30px;
-  background-color: #536a79;
-  border: #536a79 1px solid;
-  color: #f1eff0de;
-  font-weight: bold;
-  cursor: pointer;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.formButton:hover {
-  background-color: rgb(101, 128, 147);
-  border: rgb(101, 128, 147) 1px solid;
-}
-
-input {
-  width: 70%;
-  height: 40px;
-  color: #536a79;
-  border: #536a79 0.5px solid;
+.noItems {
+  margin: 40px;
   font-size: 20px;
-  border-radius: 12px;
-  padding: 0 15px;
-}
-
-a:hover {
-  background-color: #536a79;
+  color: #536a79;
+  font-weight: bold;
 }
 
 .sort {
@@ -280,137 +357,65 @@ a:hover {
   border-radius: 7px;
   border: #536a79 1.4px solid;
 }
+@media screen and (max-width: 1024px) {
+  .select {
+    width: 20%;
+  }
+}
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
-
-.card {
-  border: 1px solid #d65242;
-  background-color: #d65242;
-  color: #fff;
-  font-weight: bold;
-  font-size: 22px;
-  border-radius: 7px;
-  aspect-ratio: 3 / 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.card:hover {
-  border: 1px solid #d65242;
-  background-color: #d65142e1;
-}
-
-.controlButtons {
-  position: absolute;
-  top: 10px;
-  right: 8px;
-  display: flex;
-  gap: 10px;
-  height: 17%;
-}
-
-.cardContent {
-  height: 60%;
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div.selected {
-  border: 1px solid #e7e7e7;
-  background-color: #f7f7f7;
-  color: #e03131;
-  font-weight: bold;
-  font-size: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  aspect-ratio: 3 / 1;
-}
-
-div.selected:hover {
-  border: 1px solid #f1f1f1;
-  background-color: #f1f1f1;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.601);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
 @media screen and (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .loginForm {
-    width: 100%;
-  }
-  .logOutButton {
-    width: 20%;
-  }
-  input {
-    width: 85%;
-  }
-  .select {
-    width: 20%;
-  }
-  .addButton {
-    margin-top: 10px;
-    width: 70%;
-  }
   .cards {
     grid-template-columns: 1fr;
   }
-  form {
-    width: 90%;
-  }
-  .controlButtons {
-    right: 50px;
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
+.loginFormWrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginForm {
+  background-color: #536a79;
+  width: 50%;
+  height: auto;
+  display: flex;
+  gap: 40px;
+}
+@media screen and (max-width: 768px) {
+  .loginForm {
+    width: 100%;
+  }
+}
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .loginForm {
     width: 80%;
   }
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-  input {
-    width: 80%;
-  }
-  .select {
-    width: 20%;
-  }
-  .addButton {
-    width: 20%;
-  }
-  form {
-    width: 70%;
-  }
-  .controlButtons {
-    right: 50px;
-  }
 }
+
+.loginTitle {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.loginControlLink {
+  color: #f1eff0;
+  cursor: pointer;
+}
+.loginControlLink:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=styles.css.map */

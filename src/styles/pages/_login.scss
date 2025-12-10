@@ -1,0 +1,41 @@
+@use "../variables";
+
+.loginFormWrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginForm {
+  background-color: variables.$accent-color;
+  width: 50%;
+  height: auto;
+  display: flex;
+  gap: 40px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 80%;
+  }
+}
+
+.loginTitle {
+  color: variables.$white-for-char;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.loginControlLink {
+  color: variables.$white;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

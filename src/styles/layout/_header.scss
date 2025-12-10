@@ -1,0 +1,30 @@
+@use "../variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.search {
+  display: flex;
+}
+
+.searchIcon {
+  font-size: 18px;
+}
+
+.searchInput {
+  position: relative;
+  align-items: end;
+  border-radius: 15px;
+  border: variables.$accent-color 1.2px solid;
+  width: 90%;
+  height: 30px;
+  padding: 0 15px;
+}
