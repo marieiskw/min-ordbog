@@ -143,6 +143,11 @@ a:hover {
   gap: 10px;
   height: 28px;
 }
+@media screen and (max-width: 1200px) {
+  .controlButtons {
+    right: 30px;
+  }
+}
 
 .cardContent {
   height: 60%;
@@ -346,7 +351,7 @@ input {
   border-radius: 7px;
   border: #536a79 1.4px solid;
 }
-@media screen and (min-width: 769px) and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
   .select {
     width: 20%;
   }

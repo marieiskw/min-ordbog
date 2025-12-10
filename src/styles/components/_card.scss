@@ -29,6 +29,10 @@
   display: flex;
   gap: 10px;
   height: 28px;
+
+  @media screen and (max-width: 1200px) {
+    right: 30px;
+  }
 }
 
 .cardContent {
