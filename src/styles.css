@@ -75,7 +75,7 @@ a:hover {
     width: 70%;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .addButton {
     width: 20%;
   }
@@ -142,17 +142,7 @@ a:hover {
   right: 8px;
   display: flex;
   gap: 10px;
-  height: 17%;
-}
-@media screen and (max-width: 768px) {
-  .controlButtons {
-    right: 120px;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .controlButtons {
-    right: 50px;
-  }
+  height: 28px;
 }
 
 .cardContent {
@@ -197,7 +187,7 @@ form {
     width: 90%;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   form {
     width: 70%;
   }
@@ -231,7 +221,7 @@ input {
     width: 85%;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   input {
     width: 80%;
   }
@@ -357,7 +347,7 @@ input {
   border-radius: 7px;
   border: #536a79 1.4px solid;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .select {
     width: 20%;
   }
@@ -373,7 +363,7 @@ input {
     grid-template-columns: 1fr;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .cards {
     grid-template-columns: 1fr 1fr;
   }
@@ -399,7 +389,7 @@ input {
     width: 100%;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .loginForm {
     width: 80%;
   }

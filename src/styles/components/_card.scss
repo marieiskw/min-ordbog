@@ -29,15 +29,7 @@
   right: 8px;
   display: flex;
   gap: 10px;
-  height: 17%;
-
-  @media screen and (max-width: 768px) {
-    right: 120px;
-  }
-
-  @media screen and (max-width: 1024px) {
-    right: 50px;
-  }
+  height: 28px;
 }
 
 .cardContent {
