@@ -145,7 +145,7 @@ a:hover {
 }
 @media screen and (max-width: 1200px) {
   .controlButtons {
-    right: 30px;
+    right: 60px;
   }
 }
 
