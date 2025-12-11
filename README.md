@@ -2,7 +2,7 @@
 A simple Danish vocabulary learning app for japanese speaker.
 Users can sign up, log in, add words, edit them, delete them, and search.
 
-⚠️ NOTE
+⚠️ NOTE: 
 The deployed version on Netlify is temporarily unavailable
 due to Netlify’s free-tier credit limit.
 
@@ -42,6 +42,7 @@ The app will be back online on January 3rd.
 
 
 ## 🗂️ Project structure
+```
 - src/
  ├── components/
  │    ├── AddButton.js
@@ -71,6 +72,7 @@ The app will be back online on January 3rd.
  │    └── variables.scss
  └── utils/
       └── generateTimestamp.js
+```
 
 
 ## 🔗 Deployment
