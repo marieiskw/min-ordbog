@@ -44,34 +44,11 @@ The app will be back online on January 3rd.
 ## 🗂️ Project structure
 ```
 - src/
- ├── components/
- │    ├── AddButton.js
- │    ├── Card.js
- │    ├── Cards.js
- │    ├── LogoutButton.js
- │    ├── Search.js
- │    └── WordForm.js
- ├── hooks/
- │    ├── useWord.js
- ├── pages/
- │    ├── Auth.js
- │    └── Home.js
- ├── styles/
- │    ├── base
- │    │    ├── _global.scss
- │    ├── components
- │    │    ├── _button.scss
- │    │    ├── _card.scss
- │    │    ├── _form.scss
- │    ├── layout
- │    │    ├── _header.scss
- │    │    ├── _modal.scss
- │    ├── pages
- │    │    ├── _home.scss
- │    │    ├── _login.scss
- │    └── variables.scss
- └── utils/
-      └── generateTimestamp.js
+ ├── components/  # Reusable UI components
+ ├── hooks/       # Custom hooks
+ ├── pages/       # Page level components
+ ├── styles/      # SCSS modules (structured by base / layout / components / pages / variables)
+ └── utils/       # Helper functions
 ```
 
 
