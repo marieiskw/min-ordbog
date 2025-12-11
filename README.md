@@ -2,12 +2,6 @@
 A simple Danish vocabulary learning app for japanese speaker.
 Users can sign up, log in, add words, edit them, delete them, and search.
 
-⚠️ NOTE: 
-The deployed version on Netlify is temporarily unavailable
-due to Netlify’s free-tier credit limit.
-
-The app will be back online on January 3rd.
-
 ## 📝 Features
 - User authentication with Supabase
 - Add / edit / delete words
@@ -37,7 +31,7 @@ The app will be back online on January 3rd.
 
 ## 💻 Tech Stack
 <p>
-  <img src="https://skillicons.dev/icons?i=html,css,scss,js,react,supabase,netlify," />
+  <img src="https://skillicons.dev/icons?i=html,css,scss,js,react,supabase,vercel," />
 </p>
 
 
@@ -53,8 +47,8 @@ The app will be back online on January 3rd.
 
 
 ## 🔗 Deployment
-This app is deployed on Netlify:  
-https://min-ordbog.netlify.app/
+This app is deployed on Vercel: 
+https://min-ordbog.vercel.app/
 
 
 ## 💡 Upcoming features
