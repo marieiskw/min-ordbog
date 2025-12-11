@@ -2,6 +2,12 @@
 A simple Danish vocabulary learning app for japanese speaker.
 Users can sign up, log in, add words, edit them, delete them, and search.
 
+⚠️ NOTE
+The deployed version on Netlify is temporarily unavailable
+due to Netlify’s free-tier credit limit.
+
+The app will be back online on January 3rd.
+
 ## 📝 Features
 - User authentication with Supabase
 - Add / edit / delete words
@@ -10,6 +16,7 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 - Stores data per user (RLS enabled)
 - Quick access to DDO(Den Danske Ordbog)
 - On-screen special character input (å, æ, ø)
+- Responsive(PC/iPad/iPhone)
 
 ## 👀 Sneak peak
 
@@ -30,8 +37,40 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 
 ## 💻 Tech Stack
 <p>
-  <img src="https://skillicons.dev/icons?i=html,css,js,react,supabase,netlify," />
+  <img src="https://skillicons.dev/icons?i=html,css,scss,js,react,supabase,netlify," />
 </p>
+
+
+## 🗂️ Project structure
+- src/
+ ├── components/
+ │    ├── AddButton.js
+ │    ├── Card.js
+ │    ├── Cards.js
+ │    ├── LogoutButton.js
+ │    ├── Search.js
+ │    └── WordForm.js
+ ├── hooks/
+ │    ├── useWord.js
+ ├── pages/
+ │    ├── Auth.js
+ │    └── Home.js
+ ├── styles/
+ │    ├── base
+ │    │    ├── _global.scss
+ │    ├── components
+ │    │    ├── _button.scss
+ │    │    ├── _card.scss
+ │    │    ├── _form.scss
+ │    ├── layout
+ │    │    ├── _header.scss
+ │    │    ├── _modal.scss
+ │    ├── pages
+ │    │    ├── _home.scss
+ │    │    ├── _login.scss
+ │    └── variables.scss
+ └── utils/
+      └── generateTimestamp.js
 
 
 ## 🔗 Deployment
