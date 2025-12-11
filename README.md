@@ -10,6 +10,7 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 - Stores data per user (RLS enabled)
 - Quick access to DDO(Den Danske Ordbog)
 - On-screen special character input (å, æ, ø)
+- Responsive(PC/iPad/iPhone)
 
 ## 👀 Sneak peak
 
@@ -30,13 +31,24 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 
 ## 💻 Tech Stack
 <p>
-  <img src="https://skillicons.dev/icons?i=html,css,js,react,supabase,netlify," />
+  <img src="https://skillicons.dev/icons?i=html,css,scss,js,react,supabase,vercel," />
 </p>
 
 
+## 🗂️ Project structure
+```
+- src/
+ ├── components/  # Reusable UI components
+ ├── hooks/       # Custom hooks
+ ├── pages/       # Page level components
+ ├── styles/      # SCSS modules (structured by base / layout / components / pages / variables)
+ └── utils/       # Helper functions
+```
+
+
 ## 🔗 Deployment
-This app is deployed on Netlify:  
-https://min-ordbog.netlify.app/
+This app is deployed on Vercel: 
+https://min-ordbog.vercel.app/
 
 
 ## 💡 Upcoming features
