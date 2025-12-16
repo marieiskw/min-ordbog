@@ -14,6 +14,10 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 
 ## 👀 Sneak peak
 
+- Login
+
+![Login](images/login.png)
+
 - After login, you will have your own wordbook!
 
 ![Home](images/home.png)
@@ -28,6 +32,11 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 
 ![Add-form](images/add-form.png)
 
+【Layout for mobile】
+![LoginForMobile](images/login_iPhone.png)
+![HomeForMobile](images/home_iPhone.png)
+![Home2ForMobile](images/home2_iPhone.png)
+![Add-formForMobile](images/add-form_iPhone.png)
 
 ## 💻 Tech Stack
 <p>
