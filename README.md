@@ -32,11 +32,17 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 
 ![Add-form](images/add-form.png)
 
-【Layout for mobile】
-![LoginForMobile](images/login_iPhone.png)
-![HomeForMobile](images/home_iPhone.png)
-![Home2ForMobile](images/home2_iPhone.png)
-![Add-formForMobile](images/add-form_iPhone.png)
+### 📱Layout for mobile
+
+- Login
+<img src="images/login_iPhone.png" width="300">
+
+- Home
+<img src="images/home_iPhone.png" width="300">
+<img src="images/home2_iPhone.png" width="300">
+
+- Add form
+<img src="images/add-form_iPhone.png" width="300">
 
 ## 💻 Tech Stack
 <p>
