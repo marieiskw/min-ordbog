@@ -1,6 +1,7 @@
 @use "../variables";
 
-.noItems {
+.noItems,
+.loader {
   margin: 40px;
   font-size: 20px;
   color: variables.$accent-color;

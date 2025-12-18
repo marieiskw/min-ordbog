@@ -7,9 +7,11 @@ import WordForm from "../components/WordForm";
 import LogoutButton from "../components/LogoutButton";
 
 import useWord from "../hooks/useWord";
+import Loader from "../components/Loader";
+import NoItems from "../components/NoItems";
 
 export default function Home({ onLogout }) {
-  const { items, addWord, editWord, deleteWord } = useWord();
+  const { isLoading, items, addWord, editWord, deleteWord } = useWord();
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [keyword, setKeyword] = useState("");
@@ -56,13 +58,17 @@ export default function Home({ onLogout }) {
         <Search keyword={keyword} setKeyword={setKeyword} />
         <AddButton setIsOpenAdd={setIsOpenAdd} />
       </div>
-      <Cards
-        items={sortedItems || items}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-        setEditItem={setEditItem}
-        deleteItem={handleDeleteItem}
-      />
+      {isLoading && <Loader />}
+      {!isLoading && items.length === 0 && <NoItems />}
+      {!isLoading && items.length > 0 && (
+        <Cards
+          items={sortedItems || items}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          setEditItem={setEditItem}
+          deleteItem={handleDeleteItem}
+        />
+      )}
 
       {isOpenAdd && (
         <div className="overlay">

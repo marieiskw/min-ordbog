@@ -5,23 +5,28 @@ import generateTimestamp from "../utils/generateTimestamp";
 
 export default function useWord() {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Get data
   useEffect(() => {
     async function fetchWords() {
-      console.log("useWord");
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      const userId = user?.id;
-      const { data, error } = await supabase
-        .from("wordList")
-        .select("id, danish, japanese, ddo")
-        .eq("user_id", userId)
-        .eq("archive_flg", "0");
-
-      if (error) console.error(error);
-      else setItems(data);
+      setIsLoading(true);
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        const userId = user?.id;
+        const { data } = await supabase
+          .from("wordList")
+          .select("id, danish, japanese, ddo")
+          .eq("user_id", userId)
+          .eq("archive_flg", "0");
+        setItems(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     fetchWords();
@@ -88,5 +93,5 @@ export default function useWord() {
     setItems((prev) => prev.filter((i) => i.id !== item.id));
   }
 
-  return { items, addWord, editWord, deleteWord };
+  return { isLoading, items, addWord, editWord, deleteWord };
 }
