@@ -9,6 +9,7 @@ import LogoutButton from "../components/LogoutButton";
 import useWord from "../hooks/useWord";
 import Loader from "../components/Loader";
 import NoItems from "../components/NoItems";
+import SwitchButton from "../components/SwitchButton";
 
 export default function Home({ onLogout }) {
   const { isLoading, items, addWord, editWord, deleteWord } = useWord();
@@ -16,12 +17,13 @@ export default function Home({ onLogout }) {
   const [editItem, setEditItem] = useState(null);
   const [keyword, setKeyword] = useState("");
   const [sortBy, setSortBy] = useState("oldest");
+  const [baseLang, setBaseLang] = useState("da");
 
   let sortedItems;
 
   // Filter
   const filteredItems = items.filter((item) =>
-    item.danish.toLowerCase().startsWith(keyword.toLowerCase())
+    item.danish.toLowerCase().startsWith(keyword.toLowerCase()),
   );
 
   if (sortBy === "oldest")
@@ -53,7 +55,10 @@ export default function Home({ onLogout }) {
 
   return (
     <div className="app">
-      <LogoutButton onLogout={onLogout} />
+      <div className="ribbon">
+        <SwitchButton baseLang={baseLang} setBaseLang={setBaseLang} />
+        <LogoutButton onLogout={onLogout} />
+      </div>
       <div className="header">
         <Search keyword={keyword} setKeyword={setKeyword} />
         <AddButton setIsOpenAdd={setIsOpenAdd} />
@@ -63,6 +68,7 @@ export default function Home({ onLogout }) {
       {!isLoading && items.length > 0 && (
         <Cards
           items={sortedItems || items}
+          baseLang={baseLang}
           sortBy={sortBy}
           setSortBy={setSortBy}
           setEditItem={setEditItem}

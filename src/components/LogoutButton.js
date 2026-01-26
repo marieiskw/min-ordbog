@@ -7,10 +7,10 @@ export default function LogoutButton({ onLogout }) {
     onLogout();
   }
   return (
-    <div className="ribbon">
+    <>
       <button className="logOutButton" onClick={handleLogout}>
         Logout
       </button>
-    </div>
+    </>
   );
 }

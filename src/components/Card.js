@@ -1,11 +1,14 @@
 export default function Card({
   item,
   selectId,
+  baseLang,
   handleClick,
   handleEditItem,
   handleDeleteItem,
 }) {
   const isSelected = selectId === item.id;
+  const main = baseLang === "da" ? item.danish : item.japanese;
+  const sub = baseLang === "da" ? item.japanese : item.danish;
 
   return (
     <div
@@ -26,7 +29,7 @@ export default function Card({
         />
       </div>
       <div className="cardContent">
-        <p>{isSelected ? item.japanese : item.danish}</p>
+        <p>{isSelected ? sub : main}</p>
         <span>
           {isSelected ? (
             <a href={item.ddo} target="_blank" rel="noreferrer">

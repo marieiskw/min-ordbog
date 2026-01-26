@@ -1,9 +1,71 @@
 @use "../variables";
 
+.loginButton {
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: variables.$main-color;
+  border: variables.$main-color 1px solid;
+  color: variables.$white-for-char;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid variables.$main-color-hover;
+    background-color: variables.$main-color-hover;
+  }
+}
+
+.langSwitch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  .slider {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background-color: variables.$second-color;
+    border-radius: 999px;
+    transition: background-color 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      background-color: variables.$white-for-char;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 6px variables.$box-shadow;
+    }
+  }
+
+  input:checked + .slider {
+    background-color: variables.$second-color-slider;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(18px);
+  }
+}
+
 .ribbon {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 0 10px 0;
+
+  .switch {
+    width: 10%;
+  }
 
   .logOutButton {
     width: 10%;
@@ -21,22 +83,6 @@
     @media screen and (max-width: 768px) {
       width: 20%;
     }
-  }
-}
-
-.loginButton {
-  border-radius: 15px;
-  width: 150px;
-  height: 30px;
-  background-color: variables.$main-color;
-  border: variables.$main-color 1px solid;
-  color: variables.$white-for-char;
-  font-weight: bold;
-  cursor: pointer;
-
-  &:hover {
-    border: 1px solid variables.$main-color-hover;
-    background-color: variables.$main-color-hover;
   }
 }
 

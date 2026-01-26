@@ -5,6 +5,7 @@ import NoItems from "./NoItems";
 
 export default function Cards({
   items,
+  baseLang,
   sortBy,
   setSortBy,
   setEditItem,
@@ -37,6 +38,7 @@ export default function Cards({
             key={item.id}
             item={item}
             selectId={selectId}
+            baseLang={baseLang}
             handleClick={handleClick}
             handleEditItem={setEditItem}
             handleDeleteItem={deleteItem}
