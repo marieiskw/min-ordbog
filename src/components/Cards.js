@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import Card from "./Card";
-import NoItems from "./NoItems";
 
 export default function Cards({
   items,
