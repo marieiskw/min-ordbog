@@ -11,6 +11,7 @@ Users can sign up, log in, add words, edit them, delete them, and search.
 - Quick access to DDO(Den Danske Ordbog)
 - On-screen special character input (å, æ, ø)
 - Responsive(PC/iPad/iPhone)
+- Switchable between languages
 
 ## 👀 Sneak peak
 
@@ -56,6 +57,10 @@ Users can sign up, log in, add words, edit them, delete them, and search.
   <img src="images/add-form_iPad.png" width="700">
 </p>
 
+### 💬Switch languages
+- You can switch the card’s base language between Danish and Japanese
+  ![page_japanese](images/page_japanese.png)
+
 ## 💻 Tech Stack
 <p>
   <img src="https://skillicons.dev/icons?i=html,css,scss,js,react,supabase,vercel," />
@@ -80,4 +85,3 @@ https://min-ordbog.vercel.app/
 
 ## 💡 Upcoming features
 - Allow users to archive learned words instead of deleting them
-- Enable switching the card’s base language between Danish and Japanese
